@@ -81,6 +81,7 @@ public class CourseService {
         course.setSoChoConLai(course.getSoChoConLai() - 1);
         return toDTO(courseRepository.save(course));
     }
+
     @Transactional
     public CourseDTO releaseSeat(Long courseId) {
         Course course = courseRepository.findById(courseId)
@@ -91,4 +92,5 @@ public class CourseService {
         return toDTO(courseRepository.save(course));
     }
 }
+
 
