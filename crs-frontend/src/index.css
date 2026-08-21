@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Pastel board surface */
+  --board: #f6f2ff;
+  --board-2: #ece5fb;
+  --frame: #fbe3d6;
+  --rail: #f6c9b3;
+  --rail-light: #fbdcc9;
+
+  /* Ink + pastel markers */
+  --ink: #3d3556;
+  --ink-dim: #726a8c;
+  --ink-faint: #d9d2ee;
+  --marker-blue: #6f93e0;
+  --marker-red: #e88b8b;
+  --marker-amber: #d9a24f;
+  --marker-green: #6dbf9a;
+
+  --sans: 'Segoe UI', system-ui, Roboto, sans-serif;
+  --hand: 'Kalam', var(--sans);
+  --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  font: 17px/1.55 var(--sans);
+  color: var(--ink-dim);
+  background: var(--frame);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+h1, h2 {
+  font-family: var(--hand);
+  color: var(--ink);
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+}
+
+::selection {
+  background: var(--marker-amber);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--marker-blue);
+  outline-offset: 3px;
+}
