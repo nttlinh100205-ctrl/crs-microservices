@@ -14,6 +14,7 @@ export default function SearchBox({
     onSearchRef.current = onSearch;
 
 
+
     useEffect(() => {
         const timer = setTimeout(() => {
             onSearchRef.current(inputValue.trim());

@@ -65,5 +65,6 @@ export default function CourseList({
                 </tbody>
             </table>
         </div>
+
     );
 }
