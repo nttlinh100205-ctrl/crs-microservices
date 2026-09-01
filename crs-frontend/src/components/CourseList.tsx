@@ -23,9 +23,7 @@ export default function CourseList({courses, state, errorMessage, onRetry, onEdi
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
             <tr style={{ textAlign: 'left', borderBottom: '2px solid #333'
-
             }}>
-
                 <th>Ten mon hoc</th>
                 <th>So tin chi</th>
                 <th>So cho con lai</th>
@@ -38,7 +36,6 @@ export default function CourseList({courses, state, errorMessage, onRetry, onEdi
                 <tr key={course.id} style={{ borderBottom: '1px solid #eee'
 
                 }}>
-
                     <td>{course.tenMonHoc}</td>
                     <td>{course.soTinChi}</td>
                     <td style={{ color: course.soChoConLai === 0 ? '#b91c1c' : 'inherit' }}>

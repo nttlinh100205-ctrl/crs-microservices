@@ -10,6 +10,7 @@ const toPayload = (values: CourseFormValues) => ({
     soTinChi: Number(values.soTinChi),
     soChoToiDa: Number(values.soChoToiDa),
 });
+
 export const createCourse = (values: CourseFormValues) => {
     return axiosClient.post<Course>('/api/courses', toPayload(values));
 };

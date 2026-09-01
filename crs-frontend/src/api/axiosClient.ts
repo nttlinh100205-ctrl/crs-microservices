@@ -5,6 +5,7 @@ const axiosClient = axios.create({
         'Content-Type': 'application/json',
     },
 });
+
 axiosClient.interceptors.request.use((config) => {
     const token = localStorage.getItem('crs_token');
     if (token) {
