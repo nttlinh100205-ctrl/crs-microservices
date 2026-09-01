@@ -7,10 +7,10 @@ interface CourseListProps {
     onRetry: () => void;
     onEdit?: (course: Course) => void;
     onDelete?: (course: Course) => void;
+    onRegister?: (course: Course) => void;
+    registeringId?: number | null; // id mon dang trong qua trinh goi API dang ky, de disable rieng nut do
 }
-export default function CourseList({
-                                       courses, state, errorMessage, onRetry, onEdit, onDelete,
-                                   }: CourseListProps) {
+export default function CourseList({courses, state, errorMessage, onRetry, onEdit, onDelete, onRegister, registeringId,}: CourseListProps) {
     if (state === 'loading') return <p>Dang tai danh sach mon hoc...</p>;
     if (state === 'error') {
         return (
@@ -21,8 +21,7 @@ export default function CourseList({
         );
     }
     if (state === 'empty') return <p>Khong tim thay mon hoc nao phu hop.</p>;
-
-    const showActions = !!onEdit || !!onDelete;
+    const showActions = !!onEdit || !!onDelete || !!onRegister;
     return (
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
@@ -37,13 +36,35 @@ export default function CourseList({
                 <tbody>
             {courses.map((course) => (
                 <tr key={course.id} style={{ borderBottom: '1px solid#eee' }}>
+
                     <td>{course.tenMonHoc}</td>
                 <td>{course.soTinChi}</td>
-            <td style={{ color: course.soChoConLai === 0 ? '#b91c1c' : 'inherit' }}>{course.soChoConLai} / {course.soChoToiDa}
-            </td>{showActions && (
+            <td style={{ color: course.soChoConLai === 0 ? '#b91c1c' : 'inherit' }}>
+
+                {course.soChoConLai} / {course.soChoToiDa}
+            </td>
+            {showActions && (
             <td>
-                {onEdit && <button onClick={() => onEdit(course)}>Sua</button>} { onDelete && (
-                    <button onClick={() => onDelete(course)} style={{ marginLeft: 8, color: '#b91c1c' }}>Xoa
+                {onEdit && <button onClick={() =>
+
+                    onEdit(course)}>Sua</button>}
+                {onDelete && (
+                    <button onClick={() => onDelete(course)} style={{marginLeft: 8, color: '#b91c1c' }}>Xoa
+                    </button>
+                )}
+                {onRegister && (
+                    <button
+                        onClick={() => onRegister(course)}
+                        disabled={course.soChoConLai === 0 ||
+
+                            registeringId === course.id}
+
+                    >
+                        {registeringId === course.id
+                            ? 'Dang dang ky...'
+                            : course.soChoConLai === 0
+                                ? 'Het cho'
+                                : 'Dang ky'}
                     </button>
                 )}
             </td>
